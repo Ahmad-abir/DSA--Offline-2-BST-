@@ -242,7 +242,7 @@ public:
             std::cout<<"BST (Pre-order): ";
             PreOrder(root);
         }
-        else if(traversal_type == 'i' || traversal_type == 'i' ){
+        else if(traversal_type == 'I' || traversal_type == 'i' ){
             std::cout<<"BST (In-order): ";
             inOrder(root);
         }

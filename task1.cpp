@@ -27,7 +27,61 @@ int main(int argc, char **argv) {
         // Handle exceptions where necessary and print appropriate error messages
 
         // Start your code here
+        if(c == 'F' && in_file>>val){
+            if(bst->find(val)){
+                std::cout<<"Key "<<val<<" found in BST."<<std::endl;
+            }
+            else{
+                std::cout<<"Key "<<val<<" not found in BST."<<std::endl;
+            }
 
+        }
+        else if(c == 'E'){
+            if(bst->empty()){
+                std::cout<<"Empty"<<std::endl;
+            }
+            else std::cout<<"Not empty"<<std::endl;
+        }
+        else if(c == 'I' && in_file>>val){
+            bst->insert(val,val);
+            std::cout<<"Key "<<val<<" inserted into BST, ";
+            bst->print();
+            std::cout<<endl;
+        }
+        else if(c == 'M'){
+            string str;
+            if(in_file>>str && str == "Min"){
+                std::cout<<"Minimum value: "<<bst->find_min()<<std::endl;
+            }
+            else if(in_file>>str && str == "Max"){
+                std::cout<<"Maximum value: "<<bst->find_max()<<std::endl;
+            }
+        }
+        else if(c == 'S'){
+            std::cout<<"Size: "<<bst->size()<<std::endl;
+        }
+        else if(c == 'T'){
+            string str;
+            if(in_file>>str && str == "In"){
+                std::cout<<"BST (In-order): ";
+                bst->print('I');
+                std::cout<<std::endl;
+            }
+            else if(in_file>>str && str == "Pre"){
+                std::cout<<"BST (Pre-order): ";
+                bst->print('p');
+                std::cout<<std::endl;
+
+            }
+            else if(in_file>>str && str =="Post"){
+                std::cout<<"BST (Post-order): ";
+                bst->print('o');
+                std::cout<<std::endl;
+            }
+        }
+        else if(c == 'D'){
+            if(in_file>>val) std::cout<<"Hehe"<<std::endl;
+        }
         // End your code here
     }
     in_file.close();
