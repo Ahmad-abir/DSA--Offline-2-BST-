@@ -46,12 +46,10 @@ int main(int argc, char **argv) {
             if(bst->insert(val,val)){
                 std::cout<<"Key "<<val<<" inserted into BST, ";
                 bst->print();
-                std::cout<<std::endl;
             }
             else{
                 std::cout<<"Insertion failed! Key "<<val<<" already exists in BST, ";
                 bst->print();
-                std::cout<<std::endl;
             }
         }
         else if(c == 'M'){
@@ -70,28 +68,22 @@ int main(int argc, char **argv) {
             in_file>>str;
             if(str == "In"){
                 bst->print('I');
-                std::cout<<std::endl;
             }
             else if(str == "Pre"){
                 bst->print('p');
-                std::cout<<std::endl;
-
             }
             else if(str =="Post"){
                 bst->print('o');
-                std::cout<<std::endl;
             }
         }
         else if(c == 'D' && in_file>>val){
             if(bst->remove(val)){
                 std::cout<<"Key "<<val<<" removed from BST, ";
                 bst->print();
-                std::cout<<std::endl;
             }
             else{
                 std::cout<<"Removal failed! Key "<< val<<" not found in BST, ";
                 bst->print();
-                std::cout<<std::endl;
             }
         }
         // End your code here

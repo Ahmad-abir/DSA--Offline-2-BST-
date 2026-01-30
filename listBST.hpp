@@ -46,11 +46,11 @@ private:
         if((node->right!=nullptr && node->left == nullptr)) std::cout<<" ()";
         Default_print(node->left);
         Default_print(node->right);
-        std::cout<<")";
+        std::cout<<") ";
     }
     void PreOrder(Node*node) const{
         if(node == nullptr) return;
-        std::cout<<"("<<node->key<<":"<<node->value<<")";
+        std::cout<<"("<<node->key<<":"<<node->value<<") ";
         PreOrder(node->left);
         PreOrder(node->right);
 
@@ -58,14 +58,14 @@ private:
     void inOrder(Node*node) const{
         if(node == nullptr) return;
         inOrder(node->left);
-        std::cout<<"("<<node->key<<":"<<node->value<<")";
+        std::cout<<"("<<node->key<<":"<<node->value<<") ";
         inOrder(node->right);
     }
     void postOrder(Node*node) const{
         if(node == nullptr) return;
         postOrder(node->left);
         postOrder(node->right);
-        std::cout<<"("<<node->key<<":"<<node->value<<")";
+        std::cout<<"("<<node->key<<":"<<node->value<<") ";
     }
     // End your private helper functions here
 
@@ -297,18 +297,22 @@ public:
         if(traversal_type == 'D' || traversal_type == 'd'){
             std::cout<<"BST (Default): ";
             Default_print(root);
+            std::cout<<std::endl;
         }
         else if(traversal_type == 'P' || traversal_type == 'p' ){
             std::cout<<"BST (Pre-order): ";
             PreOrder(root);
+            std::cout<<std::endl;
         }
         else if(traversal_type == 'I' || traversal_type == 'i' ){
             std::cout<<"BST (In-order): ";
             inOrder(root);
+            std::cout<<std::endl;
         }
         else if(traversal_type == 'O' || traversal_type == 'o' ){
             std::cout<<"BST (Post-order): ";
             postOrder(root);
+            std::cout<<std::endl;
         }
     }
     
