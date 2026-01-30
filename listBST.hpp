@@ -80,7 +80,7 @@ public:
      */
     ~ListBST() {
         // TODO: Implement destructor to free memory
-        delete root ;
+        clear(root);
     }
     
     /**
@@ -115,7 +115,67 @@ public:
      */
     bool remove(Key key) override {
         // TODO: Implement removal logic
-        return true;
+        Node*temp = root;
+        Node*parent = nullptr;
+        while(temp != nullptr && temp->key != key ){
+            parent = temp;
+            if(temp->key < key) temp = temp->right;
+            else temp= temp->left;
+        }
+        if(temp == nullptr){
+            return false;
+        }
+        else if(temp->left == nullptr && temp->right == nullptr){
+            if(parent == nullptr){
+                delete root;
+                root = nullptr;
+            }
+            else if(temp == parent->right) {
+                delete temp;
+                parent->right =nullptr;
+            }
+            else{
+                delete temp;
+                parent->left = nullptr;
+            }
+            node_count--;
+            return true;
+        }
+        else if(temp->left != nullptr && temp->right != nullptr){
+            Node*successor= temp->right;
+            Node*successor_parent = temp;
+            while(successor->left !=nullptr){
+                successor_parent = successor;
+                successor = successor->left;
+            }
+            temp->key=successor->key;
+            temp->value=successor->value;
+            if(successor_parent-> left == successor){
+                successor_parent->left = successor->right;
+            }
+            else{
+                successor_parent->right = successor->right;
+            }
+            delete successor;
+            node_count--;
+            return true;
+        }
+        else{
+            Node*child_temp = (temp->left != nullptr)? temp->left:temp->right;
+            if(parent == nullptr){
+                root = child_temp;
+            }
+            else if(parent->right == temp){
+                parent->right = child_temp;
+            }
+            else{
+                parent->left = child_temp;
+            }
+            delete temp;
+            node_count--;
+            return true;
+        }
+
     }
     
     /**
@@ -238,7 +298,7 @@ public:
             std::cout<<"BST (Default): ";
             Default_print(root);
         }
-        else if(traversal_type == 'p' || traversal_type == 'p' ){
+        else if(traversal_type == 'P' || traversal_type == 'p' ){
             std::cout<<"BST (Pre-order): ";
             PreOrder(root);
         }

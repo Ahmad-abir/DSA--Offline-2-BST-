@@ -43,17 +43,23 @@ int main(int argc, char **argv) {
             else std::cout<<"Not empty"<<std::endl;
         }
         else if(c == 'I' && in_file>>val){
-            bst->insert(val,val);
-            std::cout<<"Key "<<val<<" inserted into BST, ";
-            bst->print();
-            std::cout<<endl;
+            if(bst->insert(val,val)){
+                std::cout<<"Key "<<val<<" inserted into BST, ";
+                bst->print();
+                std::cout<<std::endl;
+            }
+            else{
+                std::cout<<"Insertion failed! Key "<<val<<" already exists in BST, ";
+                bst->print();
+                std::cout<<std::endl;
+            }
         }
         else if(c == 'M'){
-            string str;
-            if(in_file>>str && str == "Min"){
+            in_file>>str ;
+            if(str == "Min"){
                 std::cout<<"Minimum value: "<<bst->find_min()<<std::endl;
             }
-            else if(in_file>>str && str == "Max"){
+            else if(str == "Max"){
                 std::cout<<"Maximum value: "<<bst->find_max()<<std::endl;
             }
         }
@@ -61,26 +67,32 @@ int main(int argc, char **argv) {
             std::cout<<"Size: "<<bst->size()<<std::endl;
         }
         else if(c == 'T'){
-            string str;
-            if(in_file>>str && str == "In"){
-                std::cout<<"BST (In-order): ";
+            in_file>>str;
+            if(str == "In"){
                 bst->print('I');
                 std::cout<<std::endl;
             }
-            else if(in_file>>str && str == "Pre"){
-                std::cout<<"BST (Pre-order): ";
+            else if(str == "Pre"){
                 bst->print('p');
                 std::cout<<std::endl;
 
             }
-            else if(in_file>>str && str =="Post"){
-                std::cout<<"BST (Post-order): ";
+            else if(str =="Post"){
                 bst->print('o');
                 std::cout<<std::endl;
             }
         }
-        else if(c == 'D'){
-            if(in_file>>val) std::cout<<"Hehe"<<std::endl;
+        else if(c == 'D' && in_file>>val){
+            if(bst->remove(val)){
+                std::cout<<"Key "<<val<<" removed from BST, ";
+                bst->print();
+                std::cout<<std::endl;
+            }
+            else{
+                std::cout<<"Removal failed! Key "<< val<<" not found in BST, ";
+                bst->print();
+                std::cout<<std::endl;
+            }
         }
         // End your code here
     }
